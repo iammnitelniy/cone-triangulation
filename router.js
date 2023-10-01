@@ -1,15 +1,15 @@
 import Router from 'express'
 import coneParamsSchema from "./coneParamsSchema.js";
-import PostController from "./PostController.js";
+import PostController from "./ConeController.js";
 
 const router = new Router()
 
 
-router.post('/conesParams', PostController.create)
-router.get('/conesParams')
-router.get('/conesParams/:id')
-router.put('/conesParams')
-router.delete('/conesParams/:id')
+router.post('/coneParams', PostController.create)
+router.get('/coneParams')
+router.get('/coneParams/:id', PostController.get)
+router.put('/coneParams')
+router.delete('/coneParams/:id', PostController.delete)
 
 
 export default router;

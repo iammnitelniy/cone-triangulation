@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon idex js",
+    "dev": "nodemon index.js",
     "stop": "killall node"
   },
   "keywords": [],
