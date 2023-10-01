@@ -1,0 +1,81 @@
+import React from 'react';
+import {Button, Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, Grid, TextField} from "@mui/material";
+import {FormikHelpers, useFormik} from "formik";
+import {StyledError} from "../../../components/StyledError";
+
+type FormikErrorType = any //Partial<Omit<ConeParamsType, 'id'>>
+
+export const ConeParamsDisplay = () => {
+
+    const formik = useFormik({
+        validate: (values) => {
+            const errors: FormikErrorType = {};
+
+            // Валидация для height (высоты)
+            if (!values.height) {
+                errors.height = "Height is required";
+            } else if (!/^[1-9][0-9]{0,2}$/.test(values.height)) {
+                errors.height = "Height must be a natural number up to 999";
+            }
+
+            // Валидация для radius (радиуса)
+            if (!values.radius) {
+                errors.radius = "Radius is required";
+            } else if (!/^[1-9][0-9]{0,2}$/.test(values.radius)) {
+                errors.radius = "Radius must be a natural number up to 999";
+            }
+
+            // Валидация для segments (количества сегментов)
+            if (!values.segments) {
+                errors.segments = "Segments is required";
+            } else if (!/^[1-9][0-9]{0,2}$/.test(values.segments)) {
+                errors.segments = "Segments must be a natural number up to 999";
+            }
+
+            return errors;
+        },
+        initialValues: {
+            height: "",
+            radius: "",
+            segments: "",
+        },
+        onSubmit: (values, formikHelpers) => {
+            // Ваши действия после отправки формы
+        },
+    });
+
+
+    return (
+        <Grid container justifyContent="center">
+            <Grid item xs={4}>
+                <form onSubmit={formik.handleSubmit}>
+                    <FormControl>
+                        <FormLabel>
+                            <h2>Make your cone</h2>
+                            <p>You should enter the data of your cone</p>
+                            <p>Height, radius and number of segments</p>
+                        </FormLabel>
+                        <FormGroup>
+                            <TextField label="height" margin="normal" {...formik.getFieldProps("height")} />
+                            {formik.touched.height && formik.errors.height && <StyledError>{formik.errors.height}</StyledError>}
+                            <TextField type="radius" label="radius" margin="normal" {...formik.getFieldProps("radius")} />
+                            {formik.touched.radius && formik.errors.radius && <StyledError>{formik.errors.radius}</StyledError>}
+                            <TextField type="segments" label="segments" margin="normal" {...formik.getFieldProps("segments")} />
+                            {formik.touched.segments && formik.errors.segments && <StyledError>{formik.errors.segments}</StyledError>}
+
+                            <Button
+                                type={"submit"}
+                                variant={"contained"}
+                                disabled={!(formik.isValid && formik.dirty)}
+                                color={"primary"}
+                            >
+                                SEND
+                            </Button>
+                        </FormGroup>
+                    </FormControl>
+                </form>
+            </Grid>
+        </Grid>
+    );
+};
+

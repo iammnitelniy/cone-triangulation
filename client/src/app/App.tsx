@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {ConeParamsDisplay} from "../features/Cone/ui/ConeParamsDisplay";
 
 function App() {
 
@@ -49,12 +49,13 @@ function App() {
 
   return (
       <div className="App">
-        <header className={'App-header'}>
-          {/*<img src={logo} className="App-logo" alt="logo" />*/}
-          <p>{!data ? "Loading..." : `${data.height}  ${data.radius}  ${data.segments}`}</p>
-            <button style={{height: "100px", width: '100px'}} onClick={() => {onClickHandler()}}>+</button>
+        {/*<header className={'App-header'}>*/}
+        {/*  /!*<img src={logo} className="App-logo" alt="logo" />*!/*/}
+        {/*  <p>{!data ? "Loading..." : `${data.height}  ${data.radius}  ${data.segments}`}</p>*/}
+        {/*    <button style={{height: "100px", width: '100px'}} onClick={() => {onClickHandler()}}>+</button>*/}
 
-        </header>
+        {/*</header>*/}
+          <ConeParamsDisplay />
       </div>
   );
 }
