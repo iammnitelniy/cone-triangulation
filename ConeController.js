@@ -6,7 +6,15 @@ class ConeController {
         try {
 
             const cone = await ConeService.create(req.body)
-            res.json(cone)
+
+         return   {
+                resultCode: 1,
+                messages: ['any', 'some'],
+                data: res.json(cone),
+                fieldsErrors: {error: 'error', field: 'any'},
+            }
+
+
 
 
         } catch (e) {

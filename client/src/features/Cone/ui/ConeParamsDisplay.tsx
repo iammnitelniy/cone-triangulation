@@ -1,31 +1,40 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Button, Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, Grid, TextField} from "@mui/material";
 import {FormikHelpers, useFormik} from "formik";
-import {StyledError} from "../../../components/StyledError";
+import {StyledError} from "../../../common/components/StyledError";
+import {useAppDispatch} from "../../../common/hooks/useAppDispatch";
+import {coneParamsThunks} from "../model/coneParams.slice";
+import {useSelector} from "react-redux";
+import {AppRootStateType} from "../../../app/store";
 
 type FormikErrorType = any //Partial<Omit<ConeParamsType, 'id'>>
 
 export const ConeParamsDisplay = () => {
 
+
+    const dispatch = useAppDispatch();
+    const cone = useSelector((state: AppRootStateType) => state.coneParams)
+
+
     const formik = useFormik({
         validate: (values) => {
             const errors: FormikErrorType = {};
 
-            // Валидация для height (высоты)
+
             if (!values.height) {
                 errors.height = "Height is required";
             } else if (!/^[1-9][0-9]{0,2}$/.test(values.height)) {
                 errors.height = "Height must be a natural number up to 999";
             }
 
-            // Валидация для radius (радиуса)
+
             if (!values.radius) {
                 errors.radius = "Radius is required";
             } else if (!/^[1-9][0-9]{0,2}$/.test(values.radius)) {
                 errors.radius = "Radius must be a natural number up to 999";
             }
 
-            // Валидация для segments (количества сегментов)
+
             if (!values.segments) {
                 errors.segments = "Segments is required";
             } else if (!/^[1-9][0-9]{0,2}$/.test(values.segments)) {
@@ -40,7 +49,10 @@ export const ConeParamsDisplay = () => {
             segments: "",
         },
         onSubmit: (values, formikHelpers) => {
-            // Ваши действия после отправки формы
+
+
+           dispatch(coneParamsThunks.sendParams(values))
+
         },
     });
 
@@ -52,6 +64,7 @@ export const ConeParamsDisplay = () => {
                     <FormControl>
                         <FormLabel>
                             <h2>Make your cone</h2>
+                            {cone.height}
                             <p>You should enter the data of your cone</p>
                             <p>Height, radius and number of segments</p>
                         </FormLabel>
