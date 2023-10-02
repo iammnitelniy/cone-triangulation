@@ -50,10 +50,7 @@ export const ConeParamsDisplay = () => {
             segments: "",
         },
         onSubmit: (values, formikHelpers) => {
-
-
            dispatch(coneParamsThunks.sendParams(values))
-
         },
     });
 

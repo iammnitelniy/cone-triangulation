@@ -50,25 +50,3 @@ class ConeController {
 
 export default new ConeController();
 
-// function computeConeTriangulation(cone) {
-//     const { height, radius, segments } = cone;
-//     const triangulation = [];
-//
-//     // Вычисляем координаты вершины конуса (A)
-//     const vertexA = { x: 0, y: 0, z: height };
-//
-//     // Создаем треугольники для боковой поверхности конуса
-//     for (let i = 0; i < segments; i++) {
-//         const angle1 = (2 * Math.PI * i) / segments;
-//         const angle2 = (2 * Math.PI * (i + 1)) / segments;
-//
-//         const nodeP1 = { x: radius * Math.cos(angle1), y: radius * Math.sin(angle1), z: 0 };
-//         const nodeP2 = { x: radius * Math.cos(angle2), y: radius * Math.sin(angle2), z: 0 };
-//
-//         // Создаем треугольник для текущего сегмента
-//         const triangle = [vertexA, nodeP1, nodeP2];
-//         triangulation.push(triangle);
-//     }
-//
-//     return triangulation;
-// }

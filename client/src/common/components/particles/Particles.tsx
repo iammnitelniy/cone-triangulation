@@ -1,7 +1,8 @@
 import { useCallback } from "react";
 import Particles from "react-tsparticles";
+import {loadSlim} from "tsparticles-slim";
 import type { Container, Engine } from "tsparticles-engine";
-import { loadSlim } from "tsparticles-slim";
+
 
 export const Particle = () => {
 
@@ -56,10 +57,10 @@ export const Particle = () => {
                     },
                     particles: {
                         color: {
-                            value: "#16d166",
+                            value: "696969",
                         },
                         links: {
-                            color: "#20c997",
+                            color: "#6495ed",
                             distance: 150,
                             enable: true,
                             opacity: 0.5,

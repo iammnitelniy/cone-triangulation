@@ -1,5 +1,5 @@
 import Router from 'express'
-import ConeController from "./ConeController.js";
+import ConeController from "./server/ConeController.js";
 const router = new Router()
 
 
