@@ -1,5 +1,11 @@
-.App {
-  text-align: center;
+
+
+.params {
+margin: 10px;
+}
+.model {
+  height: 150px;
+
 }
 
 .App-logo {

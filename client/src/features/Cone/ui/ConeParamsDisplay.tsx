@@ -20,13 +20,11 @@ export const ConeParamsDisplay = () => {
         validate: (values) => {
             const errors: FormikErrorType = {};
 
-
             if (!values.height) {
                 errors.height = "Height is required";
             } else if (!/^[1-9][0-9]{0,2}$/.test(values.height)) {
                 errors.height = "Height must be a natural number up to 999";
             }
-
 
             if (!values.radius) {
                 errors.radius = "Radius is required";
@@ -34,11 +32,14 @@ export const ConeParamsDisplay = () => {
                 errors.radius = "Radius must be a natural number up to 999";
             }
 
-
             if (!values.segments) {
                 errors.segments = "Segments is required";
             } else if (!/^[1-9][0-9]{0,2}$/.test(values.segments)) {
                 errors.segments = "Segments must be a natural number up to 999";
+            } else if (parseInt(values.segments) < 5) {
+                errors.segments = "Segments must be at least 5";
+            } else if (parseInt(values.radius) * 3 > parseInt(values.segments)) {
+                errors.segments = "Segments must be at least 3 times greater than radius";
             }
 
             return errors;
@@ -64,7 +65,6 @@ export const ConeParamsDisplay = () => {
                     <FormControl>
                         <FormLabel>
                             <h2>Make your cone</h2>
-                            {cone.height}
                             <p>You should enter the data of your cone</p>
                             <p>Height, radius and number of segments</p>
                         </FormLabel>
@@ -75,6 +75,9 @@ export const ConeParamsDisplay = () => {
                             {formik.touched.radius && formik.errors.radius && <StyledError>{formik.errors.radius}</StyledError>}
                             <TextField type="segments" label="segments" margin="normal" {...formik.getFieldProps("segments")} />
                             {formik.touched.segments && formik.errors.segments && <StyledError>{formik.errors.segments}</StyledError>}
+                            {formik.touched.segments && formik.touched.radius && parseInt(formik.values.segments) < 3 * parseInt(formik.values.radius) && (
+                                <StyledError>Segments must be at most 3 times greater than radius</StyledError>
+                            )}
 
                             <Button
                                 type={"submit"}

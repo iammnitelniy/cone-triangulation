@@ -10,7 +10,6 @@ const sendParams = createAppAsyncThunk<any, any>("", async (arg, thunkAPI) => {
     return thunkTryCatch(thunkAPI, async () => {
         const res = await coneParamsAPI.post(arg);
         if (res.request.status === 200) {
-            debugger
             return res.data;
         } else {
             const isShowAppError = !res.data.fieldsErrors.length;
@@ -21,7 +20,7 @@ const sendParams = createAppAsyncThunk<any, any>("", async (arg, thunkAPI) => {
 });
 
 
-const initialState: ConeParamsType = {};
+const initialState: ConeParamsType = {height: '0', radius: '0', segments: '0'};
 
 const slice = createSlice({
     name: "coneParams",
@@ -30,11 +29,12 @@ const slice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(sendParams.fulfilled, (state, action) => {
-        debugger
-                state.height = action.payload.height;
-                state.radius = action.payload.radius;
-                state.segments = action.payload.segments;
-                console.log(state)
+
+                state.height = action.payload.height
+                state.radius = action.payload.radius
+                state.segments = action.payload.segments
+
+
             })
 
     },

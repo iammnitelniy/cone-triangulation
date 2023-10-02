@@ -10,6 +10,14 @@ class ConeService {
 
     }
 
+    async getAll() {
+
+        const cone = await coneParamsSchema.find()
+        return cone
+
+    }
+
+
     async get(coneId) {
         if(!coneId) {
             throw new Error('No ID')
