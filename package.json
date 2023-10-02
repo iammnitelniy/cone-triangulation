@@ -1,11 +1,11 @@
 {
   "name": "cone-triangulation",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "../index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
+    "start": "node ../index.js",
+    "dev": "../node_modules/.bin/nodemon server/index.js",
     "stop": "killall node"
   },
   "keywords": [],
