@@ -74,10 +74,8 @@ export const ConeParamsDisplay = () => {
                             <TextField type="radius" label="radius" margin="normal" {...formik.getFieldProps("radius")} />
                             {formik.touched.radius && formik.errors.radius && <StyledError>{formik.errors.radius}</StyledError>}
                             <TextField type="segments" label="segments" margin="normal" {...formik.getFieldProps("segments")} />
-                            {formik.touched.segments && formik.errors.segments && <StyledError>{formik.errors.segments}</StyledError>}
-                            {formik.touched.segments && formik.touched.radius && parseInt(formik.values.segments) < 3 * parseInt(formik.values.radius) && (
-                                <StyledError>Segments must be at most 3 times greater than radius</StyledError>
-                            )}
+                            {formik.touched.segments && formik.touched.radius && formik.errors.segments && <StyledError>{formik.errors.segments}</StyledError>}
+
 
                             <Button
                                 type={"submit"}

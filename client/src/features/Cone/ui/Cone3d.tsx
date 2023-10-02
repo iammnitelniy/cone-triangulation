@@ -22,10 +22,12 @@ export const Cone3D = () => {
             segments = parseInt(coneParams.segments);
 
             if (!isNaN(radius) && !isNaN(height) && !isNaN(segments)) {
-                const coneGeometry = new THREE.ConeGeometry(radius, height, segments);
+                const scaleFactor = 0.02; // Множитель масштаба модели
+
+                const coneGeometry = new THREE.ConeGeometry(radius * scaleFactor, height * scaleFactor, segments);
                 const coneMaterial = new THREE.MeshNormalMaterial({ wireframe: true });
                 const coneMesh = new THREE.Mesh(coneGeometry, coneMaterial);
-                coneMesh.position.x = -1;
+                coneMesh.position.x = 0;
                 test.scene.add(coneMesh);
             } else {
                 console.error('Invalid cone parameters');
@@ -37,6 +39,7 @@ export const Cone3D = () => {
 
     return (
         <div>
+
             <canvas id="myThreeJsCanvas" />
         </div>
     );

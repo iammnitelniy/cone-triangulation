@@ -1,18 +1,24 @@
-import './App.css';
-import {Cone3D} from "../features/Cone/ui/Cone3d";
+import React from 'react';
 import {ConeParamsDisplay} from "../features/Cone/ui/ConeParamsDisplay";
-
+import {Cone3D} from "../features/Cone/ui/Cone3d";
+import {AppContainer, ModelContainer, AppContent, ParamsContainer} from "../common/components/styledAppComponents";
+import {Title} from "@mui/icons-material";
 
 
 function App() {
-
     return (
-        <div className={'App'}>
+        <AppContainer>
+            <AppContent>
+                <ParamsContainer>
+                    <ConeParamsDisplay />
+                </ParamsContainer>
+                <ModelContainer>
+                    <Cone3D />
+                </ModelContainer>
 
-            <div className={'params'}><ConeParamsDisplay></ConeParamsDisplay></div>
-            <div className={'model'}><Cone3D></Cone3D></div>
-        </div>
 
+            </AppContent>
+        </AppContainer>
     );
 }
 

@@ -4,7 +4,7 @@ import Stats from 'three/examples/jsm/libs/stats.module';
 
 export default class SceneInit {
     constructor(canvasId) {
-        // NOTE: Core components to initialize Three.js app.
+
         this.scene = undefined;
         this.camera = undefined;
         this.renderer = undefined;
@@ -31,9 +31,9 @@ export default class SceneInit {
             this.fov,
             window.innerWidth / window.innerHeight,
             1,
-            1000
+            1500
         );
-        this.camera.position.z = 4;
+        this.camera.position.z = 1;
 
         // NOTE: Specify a canvas which is already created in the HTML.
         const canvas = document.getElementById(this.canvasId);
@@ -45,6 +45,8 @@ export default class SceneInit {
         this.renderer.setSize(window.innerWidth, window.innerHeight);
         document.body.appendChild(this.renderer.domElement);
 
+
+        this.scene.background = new THREE.Color(0xf0f8ff)
         this.clock = new THREE.Clock();
         this.controls = new OrbitControls(this.camera, this.renderer.domElement);
         this.stats = Stats();
