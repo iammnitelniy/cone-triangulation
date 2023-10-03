@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const instance = axios.create({
-    baseURL: "https://cone-triangulation-one.vercel.app/api/coneParams",
+    baseURL: "/api/coneParams",
 
     headers: {
         'Content-Type': 'application/json'
