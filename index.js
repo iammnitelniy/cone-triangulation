@@ -10,7 +10,7 @@ const app = express()
 
 app.use(express.json())
 app.use('/api', router)
-app.use(cors({origin: '*'}))
+
 
 async function startApp() {
     try{
