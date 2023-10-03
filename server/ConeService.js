@@ -10,42 +10,6 @@ class ConeService {
 
     }
 
-    async getAll() {
-
-        const cone = await coneParamsSchema.find()
-        return cone
-
-    }
-
-
-    async get(coneId) {
-        if(!coneId) {
-            throw new Error('No ID')
-        }
-        const cone = await coneParamsSchema.findById(coneId)
-        return cone
-
-    }
-
-    async update(req, res) {
-        try {
-
-        } catch (e) {
-            res.status(500).json(e)
-        }
-    }
-
-    async delete(coneId) {
-
-            if(!coneId) {
-                throw new Error('No ID')
-
-            }
-        const deletedCone = await coneParamsSchema.findByIdAndDelete(coneId)
-        return deletedCone
-    }
-
-
 }
 
 

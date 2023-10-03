@@ -20,7 +20,7 @@ const sendParams = createAppAsyncThunk<any, any>("", async (arg, thunkAPI) => {
 });
 
 
-const initialState: ConeParamsType = {height: '0', radius: '0', segments: '0'};
+const initialState: ConeParamsType = {height: '1', radius: '1', segments: '1'};
 
 const slice = createSlice({
     name: "coneParams",
